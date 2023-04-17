@@ -1,0 +1,47 @@
+alias  k ="kubectl"
+k rollout  status deploy k8s-web-hello
+k delete all -all
+
+ kubectl apply -f deployment.yaml
+minikube  service k8s-web-hello
+
+k delete  -f deployment.yaml  -f service.yaml
+
+k exec   <pod-name> -- nslookup   nginx ( whoami)  (ls)
+
+ingress maping  name to ip
+
+k  get namespace
+
+docker ps
+docker exec -it <id/name> sh  iit will  create session in container
+k describe  pod  <pod name>
+
+minikube kubectl --create depolyment <name>  --image=<image  value>
+ k  get svc
+  k expose deployment  <dep name> --port=3000 --target -- port=80
+ k  scale  deployment <name> --replicas=number
+
+minikube dashboard
+
+docker build .  -t <name>
+k delete -all
+ updating   image
+ k set image deployment  <dep name>  <image name>
+
+minikube   service <service name> <-- to  serve
+
+
+helm
+package manager for Kubernets
+e.g to install     that useed for statefull  DB
+configmap
+secrets
+k8s  users
+     helm chart    to make avlibale to other
+
+helm search <keyword>
+   As Templating Engine
+ e,.g  without helm microserice  d/t muti service yaml . replace one file  template file , place holder values {{ .values}}}
+  values.yaml
+ template.yaml
