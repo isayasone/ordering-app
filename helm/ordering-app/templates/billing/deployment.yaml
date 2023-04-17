@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind : Deployment
+metadata :
+ name: billing
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: billing
+  template:
+   metadata:
+    labels:
+     app: billing
+   spec:
+    containers:
+     - name: billing
+       image: isayasone/ordering-app-billings
+       env:
+        - name: RABBIT_MQ_BILLING_QUEUE
+          value: billing
+        - name: RABBIT_MQ_AUTH_QUEUE
+          value: auth
+        - name: MONGODB_URI
+          value: mongodb://root:password321@ordering-app-ordering-app-mongodb-headless:27017
+        - name: RABBIT_MQ_URI
+          value: amqp://user1:password321@ordering-app-rabbitmq:5672
+
+
+
+
